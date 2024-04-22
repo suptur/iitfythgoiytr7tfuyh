@@ -25,10 +25,11 @@ jobs:
 
     - name: Run script
       run: python adguard-all.py
+
     - name: Commit and push changes
       run: |
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action"
-        git add.
+        git add .
         git commit -m "Automated update of merged_unique.txt"
         git push

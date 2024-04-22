@@ -214,7 +214,7 @@ with open(merged_unique_file, "w", encoding="utf-8") as file:
 
 # Delete downloaded files and merged_unique.txt
 download_folder = "downloads"
-os.remove(merged_unique_file)
+# os.remove(merged_unique_file)
 for filename in os.listdir(download_folder):
     file_path = os.path.join(download_folder, filename)
     os.remove(file_path)

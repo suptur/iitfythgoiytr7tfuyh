@@ -176,7 +176,30 @@ urls = [
 "https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/TurkishFilter/sections/general_url.txt",
 "https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/TurkishFilter/sections/specific.txt",
 "https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/UsefulAdsFilter/sections/usefulads.txt",
-
+##############----UBLOCK-Origin-_UASSET-ALL-STOCK---
+"https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/annoyances-cookies.txt",
+"https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/annoyances-others.txt",
+"https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/annoyances.txt",
+"https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badlists.txt",
+"https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badlists.txt",
+"https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt",
+"https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2020.txt",
+"https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2021.txt",
+"https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2022.txt",
+"https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2023.txt",
+"https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2023.txt",
+"https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2024.txt",
+"https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-mobile.txt",
+"https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt",
+"https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/lan-block.txt",
+"https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/legacy.txt",
+"https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt",
+"https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/quick-fixes.txt",
+"https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resource-abuse.txt",
+"https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/ubo-link-shorteners.txt",
+"https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/ubol-filters.txt",
+"https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt",
+####################---END----#############################
     # Add more URLs as needed
 ]
 

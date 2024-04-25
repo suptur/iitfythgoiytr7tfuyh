@@ -24,7 +24,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run script
-      run: python adguard-all.py
+      run: python Adguard+Ublock-all.py
 
     - name: Commit and push changes
       run: |

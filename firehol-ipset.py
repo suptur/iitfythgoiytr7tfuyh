@@ -10,6 +10,7 @@ logging.basicConfig(filename='script.log', level=logging.ERROR, format='%(asctim
 
 # List of URLs to download
 urls = [
+
 "https://raw.githubusercontent.com/firehol/blocklist-ipsets/master/geolite2_country/anonymous.netset",
 "https://raw.githubusercontent.com/firehol/blocklist-ipsets/master/geolite2_country/continent_af.netset",
 "https://raw.githubusercontent.com/firehol/blocklist-ipsets/master/geolite2_country/continent_an.netset",
@@ -1374,6 +1375,10 @@ def download_file(url, dest_folder):
     except Exception as e:
         logging.error(f"Failed to download file from {url}: {str(e)}")
 
+# Function to convert IPv4 address to "||ipv4 address^" format
+def convert_line(line):
+    return "||" + line.strip() + "^"
+
 # Function to download files concurrently
 def download_files(urls, dest_folder, max_concurrent=100):
     threads = []
@@ -1392,17 +1397,6 @@ def download_files(urls, dest_folder, max_concurrent=100):
     for thread in threads:
         thread.join()
 
-# Function to convert IPv4 address to "||ipv4 address^" format
-def convert_ipv4(line):
-    ipv4_pattern = r"\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}(?:\/[0-9]{1,2})?\b"
-    ipv4_addresses = re.findall(ipv4_pattern, line)
-    for ipv4 in ipv4_addresses:
-        if '/' in ipv4:
-            line = line.replace(ipv4, f"||{ipv4}^")
-        else:
-            line = line.replace(ipv4, f"||{ipv4}/32^")  # Assuming /32 for single IP addresses
-    return line
-
 # Download files and merge into a single file
 merged_lines = set()  # Using a set for faster duplicate removal
 download_folder = "downloads_ipsets"
@@ -1417,8 +1411,7 @@ for filename in os.listdir(download_folder):
     with open(filepath, "r", encoding="utf-8") as file:
         for line in file:
             if not line.startswith(("@@", "!", "#")):  # Exclude lines starting with "@@", "!", "#"
-                line = convert_ipv4(line)
-                merged_lines.add(line.strip())
+                merged_lines.add(convert_line(line))
 
 # Save updated file with unique lines and remove lines starting with "!"
 merged_unique_file = "firehol-ipset-all.txt"

@@ -1377,7 +1377,8 @@ def download_file(url, dest_folder):
 
 # Function to convert IPv4 address to "||ipv4 address^" format
 def convert_line(line):
-    return "||" + line.strip() + "^"
+    #return "||" + line.strip() + "^"
+    return line.strip()
 
 # Function to download files concurrently
 def download_files(urls, dest_folder, max_concurrent=100):

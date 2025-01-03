@@ -189,6 +189,7 @@ urls = [
 "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2023.txt",
 "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2023.txt",
 "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2024.txt",
+"https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2025.txt",
 "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-mobile.txt",
 "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt",
 "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/lan-block.txt",

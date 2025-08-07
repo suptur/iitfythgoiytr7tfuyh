@@ -1,0 +1,35 @@
+name: Country-block
+
+on:
+  schedule:
+    - cron: '0 12 * * *' # Run every day at midnight (you can adjust the schedule as needed)
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests tqdm
+        pip install -r requirements.txt
+
+    - name: Run script
+      run: python Country-block.py
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.email "action@github.com"
+        git config --global user.name "GitHub Action"
+        git add .
+        git commit -m "Automated update of merged_unique.txt"
+        git push

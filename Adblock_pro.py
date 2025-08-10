@@ -231,7 +231,7 @@ for content in contents:
             lines.append(line)
 
 # Remove duplicates and sort
-#unique_sorted_lines = sorted(set(lines))
+unique_sorted_lines = sorted(set(lines))
 
 # Save cleaned file
 with open(output_file, "w", encoding="utf-8") as f:

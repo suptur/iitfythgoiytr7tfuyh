@@ -224,6 +224,7 @@ with ThreadPoolExecutor(max_workers=15) as executor:
         contents.append(future.result())
         for line in file:
              if not line.startswith(("!")):  # Exclude lines starting with "!"
+                 merged_lines.add(line.strip())
 
 # Merge and save
 merged_content = "\n".join([c.strip() for c in contents if c.strip()])

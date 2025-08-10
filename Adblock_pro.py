@@ -220,7 +220,7 @@ for url in urls:
     filepath = download_file(url, download_folder)
     with open(filepath, "r", encoding="utf-8") as file:
         for line in file:
-             if not line.startswith(("!")):  # Exclude lines starting with "!"
+             if not line.startswith(("!", "#")):  # Exclude lines starting with "!"
                 merged_lines.add(line.strip())
 
 # Save updated file with unique lines and remove lines starting with "!"

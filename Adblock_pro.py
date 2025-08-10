@@ -1,8 +1,8 @@
 import requests
 import os
-from tqdm import tqdm
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# List of URLs to download
+# List of text file URLs
 urls = [
 "https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/DutchFilter/sections/general_extensions.txt",
 "https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/DutchFilter/sections/general_url.txt",
@@ -194,44 +194,41 @@ urls = [
 "https://easylist.to/easylist/easylist.txt",
 "https://secure.fanboy.co.nz/fanboy-annoyance.txt",
 "https://easylist.to/easylist/fanboy-social.txt",
-####################---END----#############################
-    # Add more URLs as needed
+
+    # Add more URLs here
 ]
 
-# Function to download a file and show progress
-def download_file(url, dest_folder):
-    filename = url.split("/")[-1]
-    filepath = os.path.join(dest_folder, filename)
-    with open(filepath, "wb") as file, requests.get(url, stream=True) as response:
-        total_size = int(response.headers.get("content-length", 0))
-        progress_bar = tqdm(total=total_size, unit="B", unit_scale=True, desc=f"Downloading {filename}")
-        for data in response.iter_content(chunk_size=1024):
-            file.write(data)
-            progress_bar.update(len(data))
-        progress_bar.close()
+# Folder path inside repo
+output_folder = "Filters"
+os.makedirs(output_folder, exist_ok=True)  # Create folder if not exists
 
-    return filepath
+# Output file path
+output_file = os.path.join(output_folder, "adblock_aggressive.txt")
 
-# Download files and merge into a single file
-#merged_lines = set()  # Using a set for faster duplicate removal
-download_folder = "downloads"
-os.makedirs(download_folder, exist_ok=True)
-for url in urls:
-    filepath = download_file(url, download_folder)
-    with open(filepath, "r", encoding="utf-8") as file:
+# Function to download a single file
+def download_txt(url):
+    try:
+        response = requests.get(url, timeout=15)
+        response.raise_for_status()
+        print(f"✅ Downloaded: {url}")
+        return response.text
+    except requests.RequestException as e:
+        print(f"❌ Failed: {url} — {e}")
+        return ""
+
+# Download all files concurrently
+contents = []
+with ThreadPoolExecutor(max_workers=15) as executor:
+    futures = [executor.submit(download_txt, url) for url in urls]
+    for future in as_completed(futures):
+        contents.append(future.result())
         for line in file:
              if not line.startswith(("!")):  # Exclude lines starting with "!"
-                merged_lines.add(line.strip())
 
-# Save updated file with unique lines and remove lines starting with "!"
-merged_unique_file = "Adblock_pro.txt"
-with open(merged_unique_file, "w", encoding="utf-8") as file:
-    for line in sorted(merged_lines):  # Sort lines alphabetically
-        file.write(line + "\n")
+# Merge and save
+merged_content = "\n".join([c.strip() for c in contents if c.strip()])
+with open(output_file, "w", encoding="utf-8") as f:
+    f.write(merged_content)
 
-# Delete downloaded files and merged_unique.txt
-download_folder = "downloads"
-# os.remove(merged_unique_file)
-for filename in os.listdir(download_folder):
-    file_path = os.path.join(download_folder, filename)
-    os.remove(file_path)
+print(f"\n✅ All downloads complete. Merged file saved as '{output_file}'")
+    

@@ -193,9 +193,8 @@ urls = [
 "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt",
 "https://easylist.to/easylist/easylist.txt",
 "https://secure.fanboy.co.nz/fanboy-annoyance.txt",
-"https://easylist.to/easylist/fanboy-social.txt",
-
-    # Add more URLs here
+"https://easylist.to/easylist/fanboy-social.txt"
+        # Add more URLs here
 ]
 
 # Folder path inside repo
@@ -203,7 +202,7 @@ output_folder = "Filters"
 os.makedirs(output_folder, exist_ok=True)  # Create folder if not exists
 
 # Output file path
-output_file = os.path.join(output_folder, "adblock_aggressive.txt")
+output_file = os.path.join(output_folder, "Adblock_pro.txt")
 
 # Function to download a single file
 def download_txt(url):
@@ -222,14 +221,20 @@ with ThreadPoolExecutor(max_workers=15) as executor:
     futures = [executor.submit(download_txt, url) for url in urls]
     for future in as_completed(futures):
         contents.append(future.result())
-        for line in file:
-             if not line.startswith(("!")):  # Exclude lines starting with "!"
-                 merged_lines.add(line.strip())
 
-# Merge and save
-merged_content = "\n".join([c.strip() for c in contents if c.strip()])
+# Merge, remove lines starting with "!", remove empty lines, and sort
+lines = []
+for content in contents:
+    for line in content.splitlines():
+        line = line.strip()
+        if line and not line.startswith("!"):  # Remove comments
+            lines.append(line)
+
+# Remove duplicates and sort
+unique_sorted_lines = sorted(set(lines))
+
+# Save cleaned file
 with open(output_file, "w", encoding="utf-8") as f:
-    f.write(merged_content)
+    f.write("\n".join(unique_sorted_lines))
 
-print(f"\n✅ All downloads complete. Merged file saved as '{output_file}'")
-    
+print(f"\n✅ All downloads complete. Cleaned & sorted file saved as '{output_file}'")

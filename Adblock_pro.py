@@ -213,7 +213,7 @@ def download_file(url, dest_folder):
     return filepath
 
 # Download files and merge into a single file
-merged_lines = set()  # Using a set for faster duplicate removal
+#merged_lines = set()  # Using a set for faster duplicate removal
 download_folder = "downloads"
 os.makedirs(download_folder, exist_ok=True)
 for url in urls:

@@ -1,0 +1,36 @@
+name: Adblock_pro
+
+on:
+  schedule:
+    - cron: "0 1 * * *"  # Runs daily at midnight UTC
+  workflow_dispatch: # Allow manual runs
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.x"
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests tqdm
+        pip install -r requirements.txt
+
+    - name: Run script
+      run: python Adblock_pro.py
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.email "action@github.com"
+        git config --global user.name "GitHub Action"
+        git add .
+        git commit -m "Automated update of merged_unique.txt"
+        git push

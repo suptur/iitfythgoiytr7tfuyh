@@ -200,6 +200,29 @@ urls = [
 "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/ubo-link-shorteners.txt",
 "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/ubol-filters.txt",
 "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt",
+
+##############################   HaGeZi #########################################
+"https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/popupads.txt",
+"https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/anti.piracy.txt",
+"https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.apple.txt",
+"https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.amazon.txt",
+"https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.huawei.txt",
+"https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.winoffice.txt",
+"https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.samsung.txt",
+"https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.tiktok.txt",
+"https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.tiktok.extended.txt",
+"https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.tiktok.extended.txt",
+"https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.roku.txt",
+"https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.vivo.txt",
+"https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.oppo-realme.txt",
+"https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.xiaomi.txt",
+
+####################################### EASY-list  #######################################
+"https://easylist.to/easylist/easyprivacy.txt",
+"https://secure.fanboy.co.nz/fanboy-cookiemonster.txt",
+"https://easylist.to/easylist/easylist.txt",
+"https://secure.fanboy.co.nz/fanboy-annoyance.txt",
+"https://easylist.to/easylist/fanboy-social.txt",
 ####################---END----#############################
     # Add more URLs as needed
 ]

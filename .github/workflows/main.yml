@@ -2,7 +2,9 @@ name: Run Adguard Filter Merge
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Run every day at midnight (you can adjust the schedule as needed)
+    - cron: "0 0 * * *"  # Runs daily at midnight UTC
+  workflow_dispatch: # Allow manual runs
+
 
 jobs:
   build:

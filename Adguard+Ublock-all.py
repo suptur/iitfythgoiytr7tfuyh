@@ -4,7 +4,7 @@ from tqdm import tqdm
 
 # List of URLs to download
 urls = [
-   "https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/DutchFilter/sections/general_extensions.txt",
+"https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/DutchFilter/sections/general_extensions.txt",
 "https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/DutchFilter/sections/general_url.txt",
 "https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/DutchFilter/sections/replace.txt",
 "https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/DutchFilter/sections/specific.txt",
